@@ -452,8 +452,7 @@ class _TransformerPageViewState extends State<TransformerPageView> {
 
   void _onGetSize(_) {
     Size size;
-    if (context == null) {
-      onGetSize(size);
+    if (!mounted) {
       return;
     }
     RenderObject renderObject = context.findRenderObject();
@@ -468,12 +467,11 @@ class _TransformerPageViewState extends State<TransformerPageView> {
   }
 
   void onGetSize(Size size) {
-    if(mounted){
+    if (mounted) {
       setState(() {
         _size = size;
       });
     }
-
   }
 
   @override
